@@ -5,7 +5,6 @@ import time
 import gradio as gr
 
 from AIGN import AIGN
-from ideas import idea_list
 from LLM import chatLLM
 
 STREAM_INTERVAL = 0.2
@@ -150,25 +149,48 @@ def gen_next_paragraph_button_clicked(
     ]
 
 
-with gr.Blocks() as demo:
+css = """
+#row1 {
+    min-width: 200px;
+    max-height: 700px;
+    overflow: auto;
+}
+#row2 {
+    min-width: 300px;
+    max-height: 700px;
+    overflow: auto;
+}
+#row3 {
+    min-width: 200px;
+    max-height: 700px;
+    overflow: auto;
+}
+"""
+
+with gr.Blocks(css=css) as demo:
     aign = gr.State(AIGN(chatLLM))
+    gr.Markdown("## AI 写小说 Demo")
     with gr.Row():
-        with gr.Column(scale=0):
+        with gr.Column(scale=0, elem_id="row1"):
             with gr.Tab("开始"):
+                gr.Markdown("生成大纲->大纲标签->生成开头->状态标签->生成下一段")
                 user_idea_text = gr.Textbox(
-                    "罗瑜，低等魔族，性格恶劣，立志要成为魔族大帝。它单枪匹马向勇者杀去...",
+                    "主角独自一人在异世界冒险，它爆种时会大喊一句：原神，启动！！！",
                     label="想法",
                     lines=4,
                     interactive=True,
                 )
                 user_requriments_text = gr.Textbox(
-                    "主角独自一人行动。主角不需要朋友！！！",
+                    "剧情符合逻辑。主角独自一人打怪升级。",
                     label="写作要求",
                     lines=4,
                     interactive=True,
                 )
                 embellishment_idea_text = gr.Textbox(
-                    "语言搞笑幽默", label="润色要求", lines=4, interactive=True
+                    "一本正经",
+                    label="润色要求",
+                    lines=4,
+                    interactive=True,
                 )
                 gen_ouline_button = gr.Button("生成大纲")
             with gr.Tab("大纲"):
@@ -194,14 +216,16 @@ with gr.Blocks() as demo:
                 # auto_gen_next_checkbox = gr.Checkbox(
                 #     label="自动生成下一段", checked=False, interactive=True
                 # )
-        with gr.Column(scale=3):
+        with gr.Column(scale=3, elem_id="row2"):
             chatBox = gr.Chatbot(height=f"80vh", label="输出")
-        with gr.Column(scale=0):
+        with gr.Column(scale=0, elem_id="row3"):
             novel_content_text = gr.Textbox(
                 label="小说正文", lines=32, interactive=True, show_copy_button=True
             )
             # TODO
             # download_novel_button = gr.Button("下载小说")
+
+    gr.Markdown("github: https://github.com/cjyyx/AI_Gen_Novel")
 
     gen_ouline_button.click(
         gen_ouline_button_clicked,
