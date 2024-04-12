@@ -181,13 +181,13 @@ with gr.Blocks(css=css) as demo:
                     interactive=True,
                 )
                 user_requriments_text = gr.Textbox(
-                    "剧情符合逻辑。主角独自一人打怪升级。",
+                    "",
                     label="写作要求",
                     lines=4,
                     interactive=True,
                 )
                 embellishment_idea_text = gr.Textbox(
-                    "一本正经",
+                    "",
                     label="润色要求",
                     lines=4,
                     interactive=True,

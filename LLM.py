@@ -8,7 +8,8 @@ import dashscope
 # %%
 
 ali_api_key = os.environ.get("ALI_API_KEY", None)
-qwen_model = "qwen1.5-7b-chat"
+# qwen_model = "qwen1.5-7b-chat"
+qwen_model = "qwen-max"
 # qwen_model = "qwen1.5-14b-chat"
 # qwen_model="qwen1.5-72b-chat"
 
