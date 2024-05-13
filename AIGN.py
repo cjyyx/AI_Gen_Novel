@@ -79,7 +79,7 @@ class MarkdownAgent(AgentBase):
         sections = {}
         current_section = ""
         for line in lines:
-            if line.startswith("# "):
+            if line.startswith("# ") or line.startswith(" # "):
                 # new key
                 current_section = line[2:].strip()
                 sections[current_section] = []

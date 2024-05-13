@@ -55,9 +55,7 @@ pip install -r requirements.txt
 
 ### 步骤2: 实现LLM接口
 
-项目依赖一个大语言模型。你需要完成`LLM.py`中的`chatLLM`函数的实现。
-
-如果你拥有阿里DashScope的灵积模型服务api_key，可将`LLM.py`文件顶部的`ali_api_key`变量替换为你的个人api_key，即可实现`chatLLM`函数。
+项目依赖一个大语言模型。你需要实现`LLM.py`中的`chatLLM`函数。
 
 ### 步骤3: 运行项目
 

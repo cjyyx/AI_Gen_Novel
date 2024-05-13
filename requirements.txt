@@ -1,3 +1,5 @@
 dashscope
+openai
+zhipuai
 gradio
 agentscope

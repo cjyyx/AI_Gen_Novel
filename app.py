@@ -9,7 +9,6 @@ from LLM import chatLLM
 
 STREAM_INTERVAL = 0.2
 
-
 def make_middle_chat():
     carrier = threading.Event()
     carrier.history = []
